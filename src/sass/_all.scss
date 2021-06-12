@@ -62,16 +62,18 @@ img {
 }
 
  .search-form {
-  display: block;
+  display: flex;
   margin-bottom: 30px;
   max-width: 300px;
   height: 50px;
  }
 
 .search-form input {
-  background-color: lightgreen;
+  color: lightpink;
+  background-color: black;
   font-weight: 500;
   display: inline-block;
+  margin-right: 20px;
   padding: 8px;
   font-family: inherit;
   border-radius: 10px;
@@ -88,7 +90,8 @@ img {
   display: inline-block;
   align-items: center;
   justify-content: center;
-  background-color: lightgreen;
+  color: lightpink;
+  background-color: black;
   border: 0;
   outline: 0;
   padding: 8px 24px;
