@@ -81,7 +81,7 @@ img {
   border-radius: 4px;
   border: 0;
   outline: 0;
-  transition: background-color 250ms var(--timing-function);
+  box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .button {
@@ -98,5 +98,4 @@ img {
   font: inherit;
   font-weight: 500;
   user-select: none;
-  transition: background-color 250ms var(--timing-function);
 }
