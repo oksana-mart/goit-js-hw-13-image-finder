@@ -27,7 +27,6 @@ function onSearch(e) {
   refs.galleryContainer.innerHTML = '';
   imagesApiService.query = e.currentTarget.elements.query.value.trim();
   imagesApiService.resetPage();
-  show();
 
   if (imagesApiService.query === "") {
     hide();
@@ -35,7 +34,14 @@ function onSearch(e) {
   };
   
   imagesApiService.fetchImages()
-    .then(renderImagesGallery)
+    .then(images => {
+      if (images.length === 0) {
+        hide();
+        return alert('Try to enter something again!');
+      }
+      renderImagesGallery(images);
+      show();
+    })
     .catch(onFetchError);
 }
 

@@ -8,16 +8,11 @@ export default class ImagesApiService {
   }
 
   fetchImages() {
-    //console.log(this);
     const url = `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&per_page=12&page=${this.page}`;
     return fetch(url)
     .then(responce => responce.json())
     .then(({hits}) => { 
-      //console.log({hits});
       this.incrementPage();
-      if (hits.length === 0) {
-        return alert('Try to enter something again!');
-      }
       return hits;
     });
   }
