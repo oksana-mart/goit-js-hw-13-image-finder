@@ -6,7 +6,7 @@ import imageCard from './templates/imageCard.hbs';
 const refs = {
   galleryContainer: document.querySelector('.gallery'),
   inputSearch: document.querySelector('.search-form'),
-  loadMoreBtn: document.querySelector('.btn-load-more'),
+  loadMoreBtn: document.querySelector('[data-action="load-more"]'),
   moveElement: document.querySelector('.my-element-selector')
 };
 
@@ -27,8 +27,10 @@ function onSearch(e) {
   refs.galleryContainer.innerHTML = '';
   imagesApiService.query = e.currentTarget.elements.query.value.trim();
   imagesApiService.resetPage();
+  show();
 
   if (imagesApiService.query === "") {
+    hide();
     return alert('Enter something!');
   };
   
@@ -50,4 +52,12 @@ function renderImagesGallery(images) {
 
 function onFetchError() {
   alert('Something is wrong! Try again!');
+}
+
+function show() {
+  refs.loadMoreBtn.classList.remove('is-hidden');
+}
+
+function hide() {
+  refs.loadMoreBtn.classList.add('is-hidden');
 }
