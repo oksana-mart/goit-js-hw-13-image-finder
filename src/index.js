@@ -28,7 +28,7 @@ function onSearch(e) {
   imagesApiService.query = e.currentTarget.elements.query.value.trim();
   imagesApiService.resetPage();
 
-  if (imagesApiService.query === "") {
+  if (imagesApiService.query === '') {
     hide();
     return alert('Enter something!');
   };
@@ -37,6 +37,8 @@ function onSearch(e) {
     .then(images => {
       if (images.length === 0) {
         hide();
+        refs.inputSearch.reset();
+        imagesApiService.query = '';
         return alert('Try to enter something again!');
       }
       renderImagesGallery(images);
