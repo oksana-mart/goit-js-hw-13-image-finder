@@ -37,19 +37,30 @@ function onSearch(e) {
     .then(images => {
       if (images.length === 0) {
         hide();
-        refs.inputSearch.reset();
-        imagesApiService.query = '';
         return alert('Try to enter something again!');
       }
-      renderImagesGallery(images);
-      show();
+      else if (images.length > 0 && images.length < 12) {
+        renderImagesGallery(images);
+        hide();
+      }
+      else {
+        renderImagesGallery(images);
+        show();
+      }
     })
     .catch(onFetchError);
 }
 
 function onLoadMore() {
   imagesApiService.fetchImages()
-  .then(renderImagesGallery);
+  .then(images => {
+    if (images.length < 12) {
+      renderImagesGallery(images);
+      hide();
+      return;
+    }
+    renderImagesGallery(images);
+  });
 }
 
 function renderImagesGallery(images) {
